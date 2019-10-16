@@ -35,7 +35,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+#ifdef FX30
+#include <linux/i2c-dev-user.h>
+#else
 #include <linux/i2c-dev.h>
+#endif
 #include <sys/ioctl.h>
 
 #include "com_diozero_internal_provider_sysfs_NativeI2C.h"

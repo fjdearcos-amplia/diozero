@@ -1,7 +1,7 @@
 RM = rm -f
-CC = gcc
+CC = ${CROSS_TOOL}gcc
 
-CFLAGS = -Wall -fPIC -O3
+CFLAGS = -Wall -fPIC -O3 ${CROSS_FLAGS}
 INCLUDES = -I$(JAVA_HOME)/include -I$(JAVA_HOME)/include/linux
 LFLAGS = 
 SO_FILE_EXT = so
@@ -24,7 +24,7 @@ all: $(LIB_TARGET)
 
 $(LIB_TARGET): $(OBJS)
 	@echo [LINK] $(LIB_TARGET)
-	@$(CC) -shared -o $(LIB_TARGET) $(OBJS) $(LFLAGS) $(LIBS)
+	@$(CC) -shared -o $(LIB_TARGET) $(OBJS) $(LFLAGS) $(LIBS) -DFX30
 
 $(MAIN): $(OBJS)
 	@echo [LINK] $(MAIN)
